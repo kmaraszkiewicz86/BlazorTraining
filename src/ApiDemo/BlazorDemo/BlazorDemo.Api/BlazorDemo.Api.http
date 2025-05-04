@@ -1,6 +1,39 @@
 @BlazorDemo.Api_HostAddress = http://localhost:5067
 
-GET {{BlazorDemo.Api_HostAddress}}/weatherforecast/
+### GET all todo items
+GET {{BlazorDemo.Api_HostAddress}}/api/todo
 Accept: application/json
 
 ###
+
+### GET a single todo item by ID
+GET {{BlazorDemo.Api_HostAddress}}/api/todo/1
+Accept: application/json
+
+###
+
+### POST a new todo item
+POST {{BlazorDemo.Api_HostAddress}}/api/todo
+Content-Type: application/json
+
+{
+  "title": "Create Blazor UI",
+  "isDone": false
+}
+
+###
+
+### PUT update existing todo item
+PUT {{BlazorDemo.Api_HostAddress}}/api/todo/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Create Blazor UI (updated)",
+  "isDone": true
+}
+
+###
+
+### DELETE a todo item
+DELETE {{BlazorDemo.Api_HostAddress}}/api/todo/1

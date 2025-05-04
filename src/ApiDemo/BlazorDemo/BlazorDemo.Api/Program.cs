@@ -17,6 +17,13 @@ builder.Services.AddCors(opt =>
 });
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.EnsureCreated();
+}
+
 app.UseCors("AllowAll");
 
 // Configure the HTTP request pipeline.
